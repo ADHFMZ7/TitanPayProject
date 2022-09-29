@@ -7,8 +7,7 @@ Titan payment platform
 Payment Platform: The Payment platform helps in creating a hassle free environment to pay 
 the bills , sort their purchases and store the purchase information 
 
-Functions of a User in Payment Platform:
-
+## Functions of a User in Payment Platform:
 
 ->User can create an Account
     1)Name,Fullname,Phno,Password,country,address 
@@ -27,7 +26,7 @@ different occasions)
 ->User should be able to display all the purchases made (use a filter to sort the purchases made 
 between those days””)
 
-Cards class:
+## Cards class:
 
 Different cards have different transaction fees, so you need to sum up the transaction fee for 
 the purchases paid when you pay your bills
