@@ -38,7 +38,8 @@ Supported purchase cards
 - Visa – 1%
 - Discover – 0.5%
 - Convenience fee -0.2% 
-- Purchase class:
+
+## Purchase class
 For a purchase the necessary fields are
 1) Date 
 2) Purchase card
