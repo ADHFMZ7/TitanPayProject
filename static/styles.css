@@ -20,11 +20,8 @@
 }
 
 .div {
-    width: 250px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 150px;
+    margin:0 auto;
 }
 
 body {
