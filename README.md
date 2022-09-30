@@ -48,4 +48,5 @@ For a purchase the necessary fields are
 6) Billing cycle in which the transaction fits into (“Every month is a different billing cycle example 
 “01-01-2023,01-31-2023””)
 7) Status to check whether the transaction is paid or due
+
 Extra credits: Create a pdf to show the purchases made and Payments paid 
