@@ -4,11 +4,18 @@ from flask import Flask, render_template, request, redirect, flash, get_flashed_
 
 app = Flask(__name__)
 app.secret_key = "asdfgjgh"
+
+#models
 accounts = {}
 
-# @app.route('/')
-# def index():
-#     return render_template("index.html")
+@dataclass
+class Account:
+    name    : str
+    pword   : str
+    name    : str
+    phone   : str
+    country : str 
+    address : str
 
 @app.route('/login', methods=["POST", "GET"])
 @app.route('/')
@@ -19,7 +26,6 @@ def login():
         username = request.form.get("username") 
         password = request.form.get("password")
         if request.form.get("signup") or not valid(username, password):
-            flash("Login Failed. Please Sign Up First")
             return redirect("/signup") 
         else:
             print("success")
@@ -35,17 +41,11 @@ def signup():
         country= request.form["country"]
         address= request.form["address"]
         accounts[user] = Account(user, pword, name, phone, country, address)
+        flash("Account Created. Please Login.")
         return redirect("\login") 
     return render_template("signup.html")
 
 def valid(username, password):
+    flash("Login Failed. Please Sign Up First")
     return username in accounts.keys() and accounts[username].pword == password 
 
-@dataclass
-class Account:
-    name    : str
-    pword   : str
-    name    : str
-    phone   : str
-    country : str 
-    address : str
