@@ -1,11 +1,16 @@
-{% extents "layout.html" %}
+{% extends "layout.html" %}
 
 {% block body %}
-
-    <form action="" method="POST">
-        <input type="text">
-        <input type="submit" value="register">
+    <h4>{{ a }}</h4>
+    <form action="/signup" method="POST">
+        <input type="text" placeholder="Username" name="username">
+        <input type="text" placeholder="Password" name="password">
+        <input type="text" placeholder="Full Name" name="fullname">
+        <input type="text" placeholder="Phone Number" name="phone">
+        <input type="text" placeholder="Country" name="country">
+        <input type="text" placeholder="Address" name="address">
+        <input type="submit">
     </form>
 
-{% endbody %}
+{% endblock %}
 

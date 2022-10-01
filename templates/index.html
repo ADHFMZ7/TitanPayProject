@@ -4,12 +4,14 @@
 
     <body>
         <div class="div">
+
             <h1 class="title flex">Titan Payment Platform</h1>
             
-            <form>
-                <input type="text" value="Username">
-                <input type="text" value="Password">
-                <input type="submit" value="sign up">
+            <form action="/login" method="post">
+                <input type="text" placeholder="Username" name="username">
+                <input type="text" placeholder="Password"name="password">
+                <input type="submit" name="login" value="Log In" />
+                <input type="submit" name="signup" value="Sign Up" />
 
             </form>
 

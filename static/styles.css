@@ -1,4 +1,4 @@
-.button {
+button {
     background-color: darkgoldenrod;
     border: none;
     color: white;
@@ -10,8 +10,6 @@
     border-radius: 4px;
     transition-duration: 0.4s;
 }
-
-
 
 .button:hover {
     background-color: white;
