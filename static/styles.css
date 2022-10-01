@@ -11,6 +11,10 @@ button {
     transition-duration: 0.4s;
 }
 
+input {
+    margin: 0.1cm;
+}
+
 .button:hover {
     background-color: white;
     color: darkgoldenrod;

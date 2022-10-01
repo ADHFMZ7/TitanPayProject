@@ -1,16 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h4>{{ a }}</h4>
-    <form action="/signup" method="POST">
-        <input type="text" placeholder="Username" name="username">
-        <input type="text" placeholder="Password" name="password">
-        <input type="text" placeholder="Full Name" name="fullname">
-        <input type="text" placeholder="Phone Number" name="phone">
-        <input type="text" placeholder="Country" name="country">
-        <input type="text" placeholder="Address" name="address">
-        <input type="submit">
-    </form>
-
+    <div class="div">
+        <h1>Sign Up</h1>
+        <h4>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </h4>
+        <form action="/signup" method="POST" class="form">
+            <input type="text" placeholder="Username" name="username">
+            <input type="text" placeholder="Password" name="password">
+            <input type="text" placeholder="Full Name" name="fullname">
+            <input type="text" placeholder="Phone Number" name="phone">
+            <input type="text" placeholder="Country" name="country">
+            <input type="text" placeholder="Address" name="address">
+            <input type="submit">
+        </form>
+    </div
 {% endblock %}
 
