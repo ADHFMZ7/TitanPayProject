@@ -26,12 +26,6 @@ class Purchase(db.Model):
     def __repr__(self):
         return f"Purchase('{self.amount}', '{self.date}', '{self.card}', '{self.paid}')"
     
-def valid(username, password):
-    return True 
-    ret = username in accounts.keys() and accounts[username].pword == password 
-    if not ret:
-        flash("Login Failed. Please Sign Up First")
-    return ret 
 
 def create_user(request):
     
