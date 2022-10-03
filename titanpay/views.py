@@ -1,6 +1,16 @@
 from flask import render_template, request, redirect, flash
+from flask_login import LoginManager, login_required
 from titanpay import app
-from titanpay.models import User, Purchase
+from titanpay.models import User, Purchase, create_purchase, create_user, valid
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 @app.route('/login', methods=["POST", "GET"])
 @app.route('/')
@@ -23,21 +33,12 @@ def signup():
         return redirect("\login") 
     return render_template("signup.html")
 
-def valid(username, password):
-    return True 
-    ret = username in accounts.keys() and accounts[username].pword == password 
-    if not ret:
-        flash("Login Failed. Please Sign Up First")
-    return ret 
 
-def create_user(request):
-    
-    user = User(
-        username=request.form["username"],
-        pword=request.form["password"],
-        name=request.form["fullname"],
-        phone=request.form["phone"],
-        country=request.form["country"],
-        address=request.form["address"]
-    )
-    
+@app.route('/transaction', methods=["GET", "POST"])
+@login_required
+def transaction():
+    if request.method =="POST":
+        create_purchase(request)
+        flash("new purchase added")
+        return redirect('/home')
+    return render_template("/transaction") 

@@ -8,6 +8,17 @@
             <h1 class="title flex">Titan Payment Platform</h1>
             
             <h2>Login</h2>
+    
+
+
+            <form action="/login" method="post">
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="Password"name="password">
+                <input type="submit" name="login" value="Log In" />
+                <input type="submit" name="signup" value="Sign Up" />
+
+            </form>
+
             <h4>
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
@@ -19,15 +30,6 @@
                     {% endif %}
                 {% endwith %}
             </h4>
-
-
-            <form action="/login" method="post">
-                <input type="text" placeholder="Username" name="username">
-                <input type="text" placeholder="Password"name="password">
-                <input type="submit" name="login" value="Log In" />
-                <input type="submit" name="signup" value="Sign Up" />
-
-            </form>
 
         </div>
     </body>

@@ -3,7 +3,18 @@
 {% block body %}
     <div class="div">
         <h1>Sign Up</h1>
-        <h4>
+
+        <form action="/signup" method="POST" class="form">
+            <input required type="text" placeholder="Username" name="username">
+            <input required type="password" minlength="8" placeholder="Password" name="password">
+            <input required type="text" placeholder="Full Name" name="fullname">
+            <input required type="tel" minlength="10" placeholder="Phone Number" name="phone">
+            <input required type="text" placeholder="Country" name="country">
+            <input required type="text" placeholder="Address" name="address">
+            <input type="submit">
+        </form>
+
+            <h4>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul class=flashes>
@@ -14,15 +25,6 @@
                 {% endif %}
             {% endwith %}
         </h4>
-        <form action="/signup" method="POST" class="form">
-            <input type="text" placeholder="Username" name="username">
-            <input type="text" placeholder="Password" name="password">
-            <input type="text" placeholder="Full Name" name="fullname">
-            <input type="text" placeholder="Phone Number" name="phone">
-            <input type="text" placeholder="Country" name="country">
-            <input type="text" placeholder="Address" name="address">
-            <input type="submit">
-        </form>
     </div
 {% endblock %}
 
