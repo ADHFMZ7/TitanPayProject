@@ -2,6 +2,54 @@
 
 {% block body %}
 
-    <h2>Welcome {{  }} </h2>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h1>Welcome {{ current_user.name }}!</h1>
+          </div>
 
-{* endblock %}
+        {% with purchases = current_user.purchases %}
+            {% if purchases %}
+                <table>
+                    <tr>
+                    <th>Date</th>
+                    <th>Card</th> 
+                    <th>Amount</th>
+                    <th>Billing Cycle</th>
+                    <th>Pay Status</th>
+                    </tr>
+
+                    {% for purchase in purchases %}
+
+                        <tr>
+                        <td>{{ purchase.date }}</td>
+                        <td>{{ purchase.card }}</td>
+                        <td>${{ '{:.2f}'.format(purchase.amount) }}</td>
+                        <td>{{ purchase.cycle }}</td>
+                        <td>{{ "Yes" if purchase.paid else "No"}}</td>
+
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            {% endif %}
+        {% endwith %}
+        
+
+        <a href="transaction">Create a new transaction</a>
+        <br>
+        <a href="logout">Sign Out</a>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        {% endwith %}
+    </div
+
+{% endblock %}

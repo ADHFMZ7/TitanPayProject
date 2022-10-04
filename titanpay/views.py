@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, flash
-from flask_login import LoginManager, login_required, login_user
+from flask_login import LoginManager, login_required, login_user, current_user, logout_user
 from titanpay import app
 from titanpay.models import User, Purchase, create_purchase, create_user
 
@@ -15,6 +15,8 @@ def load_user(user_id):
 @app.route('/login', methods=["POST", "GET"])
 @app.route('/')
 def login():
+    if current_user.is_authenticated:
+        return redirect("/home")
     if request.method == "POST":
         username = request.form.get("username") 
         password = request.form.get("password")
@@ -23,12 +25,13 @@ def login():
         print(user)
         if user:
             if user.pword == password:
-                login_user(user)
-                return redirect("/transaction")
+                login_user(user, remember=True)
+                return redirect("/home")
             else:
                 flash("Wrong password. Try again.")
+                return redirect("/login")
         else:
-            flash("User does not exits. Try again.")
+            flash("User does not exist. Please sign up.")
         
         return redirect("/signup") 
             
@@ -51,3 +54,15 @@ def transaction():
         flash("new purchase added")
         return redirect('/home')
     return render_template("transaction.html") 
+
+@app.route('/home', methods=["GET"])
+@login_required
+def home():
+    return render_template("home.html")
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("Succesfully logged out")
+    return redirect('/login')
