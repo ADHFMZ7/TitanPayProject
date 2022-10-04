@@ -9,7 +9,7 @@
 
         {% with purchases = current_user.purchases %}
             {% if purchases %}
-                <table>
+                <table class="table table-striped">
                     <tr>
                     <th>Date</th>
                     <th>Card</th> 
@@ -33,12 +33,11 @@
                 </table>
             {% endif %}
         {% endwith %}
-        
-
-        <a href="transaction">Create a new transaction</a>
+        <div class="d-grid gap-2">
+            <a href="transaction" class="btn btn-primary btn-lg btn-block" role="button">New Transaction</a>
+            <a href="logout" class="btn btn-danger btn-lg btn-block" role="button">Log Out</a>
+        </div>
         <br>
-        <a href="logout">Sign Out</a>
-
         {% with messages = get_flashed_messages() %}
             {% if messages %}
             <div class="alert alert-danger" role="alert">
