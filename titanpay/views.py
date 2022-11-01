@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, flash
 from flask_login import LoginManager, login_required, login_user, current_user, logout_user
-from titanpay import app
+from titanpay import app, db
 from titanpay.models import User, Purchase, create_purchase, create_user
 
 login_manager = LoginManager()
@@ -40,6 +40,11 @@ def login():
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
+        username = request.form.get("username")
+        for x in db.session.query(User):
+            if username == x.username:
+                flash("username already exists")
+                return render_template("signup.html")
         create_user(request)
         flash("Account Created. Please Login.")
         return redirect("\login") 
@@ -58,7 +63,8 @@ def transaction():
 @app.route('/home', methods=["GET"])
 @login_required
 def home():
-    return render_template("home.html")
+    current_user.calculate_balance()
+    return render_template("home.html", cat=None)
 
 @app.route("/logout")
 @login_required
@@ -66,3 +72,8 @@ def logout():
     logout_user()
     flash("Succesfully logged out")
     return redirect('/login')
+
+@app.route("/info")
+@login_required
+def info():
+    return render_template("info.html")

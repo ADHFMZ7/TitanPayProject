@@ -4,18 +4,20 @@
 
     <div class="container">
         <div class="py-5 text-center">
-            <h1>Welcome {{ current_user.name }}!</h1>
+            <h1>Welcome <a href="/info">{{ current_user.name }}!</a></h1>
+            <br>
+            <h3>Your current balance is ${{ current_user.calculate_balance() }}</h3>
           </div>
-
+        
         {% with purchases = current_user.purchases %}
             {% if purchases %}
-                <table class="table table-striped">
+                <table class="table table-striped" id="sortable">
                     <tr>
-                    <th>Date</th>
-                    <th>Card</th> 
-                    <th>Amount</th>
-                    <th>Billing Cycle</th>
-                    <th>Pay Status</th>
+                    <th onclick="sortBy(0)">Date</th>
+                    <th onclick="sortBy(1)">Card</th> 
+                    <th onclick="sortBy(2)">Amount</th>
+                    <th onclick="sortBy(3)">Billing Cycle</th>
+                    <th onclick="sortBy(4)">Pay Status</th>
                     </tr>
 
                     {% for purchase in purchases %}

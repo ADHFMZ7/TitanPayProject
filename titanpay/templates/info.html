@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="static/styles.css">
+
+    <body>
+        <div class="container">
+            <div class="py-5 text-center">
+                <h1>Titan Payment Platform</h1>
+                <h2>Welcome {{ current_user.name }}</h2>
+            </div>
+            
+            <table class="table table-striped" id="sortable">
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th> 
+                    <th>Phone Number</th>
+                    <th>Country</th>
+                    <th>Address</th>
+                </tr>
+
+                <tr>
+                    <td>{{ current_user.username }}</td>
+                    <td>{{ current_user.name }}</td>
+                    <td>{{ current_user.phone }}</td>
+                    <td>{{ current_user.country }}</td>
+                    <td>{{ current_user.address }}<td>
+                </tr>
+            </table>
+            <br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endwith %}
+
+        </div>
+    </body>
+
+{% endblock %}

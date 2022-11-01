@@ -31,6 +31,14 @@ class User(db.Model, UserMixin):
     def get_id(self):
         return self.id
     
+    def calculate_balance(self):
+        balance = 0
+        for x in self.purchases:
+            if not x.paid:
+                balance += x.amount
+        print(f"BALANCE IS {balance}")
+        return round(balance, 2)
+    
     def __repr__(self):
         return f"User('{self.username}', '{self.name}', '{self.phone}')"
     
