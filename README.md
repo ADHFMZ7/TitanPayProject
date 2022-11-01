@@ -14,4 +14,20 @@ It does this in two tables:
 
 - Users
 
+    - id
+    - username
+    - pword
+    - name
+    - phone
+    - country
+    - address
+    - purchases
+
+    - is_authenticated
+
+
 - Purchases
+
+
+
+##
