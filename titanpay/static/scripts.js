@@ -1,3 +1,5 @@
+// Algorithm found at https://lage.us/Javascript-Sort-2d-Array-by-Column.html
+
 cPrev = -1; 
 
 function sortBy(col) {
