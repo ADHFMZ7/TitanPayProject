@@ -23,21 +23,21 @@ It does this in two tables:
 - `address`
 - `purchases`
 
- - `get_id()`: returns id of user
- - `calculate_balance()`: calculates current balance of user
- - `__repr__()`: returns a string that represents current user 
+- `get_id()`: returns id of user
+- `calculate_balance()`: calculates current balance of user
+- `__repr__()`: returns a string that represents current user 
 
 
 ### Purchases
- -`id`
- -`date`
- -`card`
- -`amount`
- -`cycle`
- -`paid`
- -`user_id`
+- `id`
+- `date`
+- `card`
+- `amount`
+- `cycle`
+- `paid`
+- `user_id`
 
- -`__repr__()`: returns a string that represents purchase data
+- `__repr__()`: returns a string that represents purchase data
 
 ### Other Functions
 
