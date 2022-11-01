@@ -4,7 +4,10 @@ This web app allows users to sort, pay, and store their payment information.
 
 It uses the Flask we microframework 
 
-To run the app, 
+To run the app, install the requirements and run
+'''
+python3 run.py
+'''
 
 ## Database
 
