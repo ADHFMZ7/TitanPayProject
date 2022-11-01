@@ -58,5 +58,5 @@ It does this in two tables:
 
 Some javascript is also used in other parts of the program.
 
-- `sortBy(column)`: This function takes in a column number of an html table as input, and sorts it by the values in that column.
+- `sort(column)`: This function takes in a column number of an html table as input, and sorts it by the values in that column.
 

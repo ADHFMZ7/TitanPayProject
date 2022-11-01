@@ -1,28 +1,30 @@
-
-
 cPrev = -1; 
 
-function sortBy(c) {
+function sortBy(col) {
     rows = document.getElementById("sortable").rows.length;
     columns = document.getElementById("sortable").rows[0].cells.length; 
     arrTable = [...Array(rows)].map(e => Array(columns)); 
 
-    for (ro=0; ro<rows; ro++) { 
-        for (co=0; co<columns; co++) { 
+    for (i=0; i<rows; i++) { 
+        for (j=0; j<columns; j++) { 
             
-            arrTable[ro][co] = document.getElementById("sortable").rows[ro].cells[co].innerHTML;
+            arrTable[i][j] = document.getElementById("sortable").rows[i].cells[j].innerHTML;
         }
     }
 
     th = arrTable.shift(); 
     
-    if (c !== cPrev) { 
+    if (col !== cPrev) { 
         arrTable.sort(
             function (a, b) {
-                if (a[c] === b[c]) {
+                if (a[col] === b[col]) {
                     return 0;
                 } else {
-                    return (a[c] < b[c]) ? -1 : 1;
+                    if (a[col] < b[col]){
+                        return -1
+                    } else {
+                        return 1
+                    }
                 }
             }
         );
@@ -30,13 +32,13 @@ function sortBy(c) {
         arrTable.reverse();
     }
     
-    cPrev = c; 
+    cPrev = col; 
 
     arrTable.unshift(th);
 
-    for (ro=0; ro<rows; ro++) {
-        for (co=0; co<columns; co++) {
-            document.getElementById("sortable").rows[ro].cells[co].innerHTML = arrTable[ro][co];
+    for (i=0; i<rows; i++) {
+        for (j=0; j<columns; j++) {
+            document.getElementById("sortable").rows[i].cells[j].innerHTML = arrTable[i][j];
         }
     }
 }
