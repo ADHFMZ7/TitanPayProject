@@ -63,7 +63,6 @@ def transaction():
 @app.route('/home', methods=["GET"])
 @login_required
 def home():
-    current_user.calculate_balance()
     return render_template("home.html", cat=None)
 
 @app.route("/logout")
