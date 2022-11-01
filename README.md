@@ -1,4 +1,5 @@
 # Titan Payment Platform
+### Written by Ahmad Aldasouqi
 
 This web app allows users to sort, pay, and store their payment information.
 
