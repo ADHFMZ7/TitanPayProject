@@ -76,3 +76,7 @@ def logout():
 @login_required
 def info():
     return render_template("info.html")
+
+@app.route("/pay")
+@login_required
+def
